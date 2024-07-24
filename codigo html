@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto</title>
+</head>
+<body>
+  <h2>Formulario de Contacto</h2>
+  <form id="contactForm">
+    <label for="name">Nombre:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="phone">Número de Teléfono:</label><br>
+    <input type="tel" id="phone" name="phone" required><br><br>
+
+    <label for="email">Correo Electrónico:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="services">Servicios:</label><br>
+    <select id="services" name="services" multiple required>
+      <option value="Servicio 1">Servicio 1</option>
+      <option value="Servicio 2">Servicio 2</option>
+      <option value="Servicio 3">Servicio 3</option>
+    </select><br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Obtener los datos del formulario
+      var formData = new FormData(this);
+
+      // Convertir los datos a un objeto JSON
+      var jsonData = {};
+      formData.forEach(function(value, key){
+        jsonData[key] = value;
+      });
+
+      // Enviar los datos por correo electrónico (simulado)
+      enviarDatosPorCorreo(jsonData);
+      
+      // Puedes redirigir a una página de confirmación
+      alert('¡Gracias! Tus datos han sido enviados.');
+
+      // O podrías redirigir a una página específica
+      // window.location.href = 'pagina-de-confirmacion.html';
+    });
+
+    function enviarDatosPorCorreo(data) {
+      // Aquí puedes implementar el código para enviar los datos por correo electrónico
+      // Esto puede requerir un backend o una API de servicio de correo electrónico
+      console.log('Datos enviados por correo:', data);
+      // Aquí deberías integrar la lógica para enviar los datos por correo
+      // Puedes usar servicios como EmailJS, SMTP.js, etc., o un backend para manejar el envío.
+    }
+  </script>
+</body>
+</html>
